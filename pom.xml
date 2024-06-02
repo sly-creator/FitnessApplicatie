@@ -7,6 +7,12 @@
   <packaging>war</packaging>
   <name>Archetype - FitnessApplicatie</name>
   <url>http://maven.apache.org</url>
+  <properties>
+    <java.version>17</java.version>
+    <maven.compiler.source>19</maven.compiler.source>
+    <maven.compiler.target>19</maven.compiler.target>
+  </properties>
+
 
   <dependencies>
     <dependency>
@@ -20,6 +26,12 @@
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
       <version>4.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>RELEASE</version>
+      <scope>test</scope>
     </dependency>
 
   </dependencies>
