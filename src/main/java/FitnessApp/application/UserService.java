@@ -6,21 +6,36 @@ import FitnessApp.domain.User;
 import FitnessApp.domain.Workout;
 import FitnessApp.domain.WorkoutSession;
 import jakarta.transaction.Transactional;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 @Transactional
 public class UserService {
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEnco;
 
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEnco = passwordEncoder;
     }
 
-    public User createUser(String name, String email, String password) {
-        User user = new User(name, email, password);
-        return userRepository.save(user);
+    public void createUser(String name, String email, String password) {
+        String encodedPassword = passwordEnco.encode(password);
+        User user = new User(name, email, encodedPassword);
+        userRepository.save(user);
+    }
+
+    public User login(String email, String password) {
+        User user = userRepository.findByEmail(email);
+        if (user == null) {
+            throw new IllegalArgumentException("User not found");
+        }
+        if (!passwordEnco.matches(password, user.getPassword())) {
+            throw new IllegalArgumentException("Invalid password");
+        }
+        return user;
     }
 
     public User findUserByName(String name) {
@@ -36,6 +51,8 @@ public class UserService {
     }
 
     public void updateUser(User user) {
+        String encodedPassword = passwordEnco.encode(user.getPassword());
+        user.setPassword(encodedPassword);
         userRepository.save(user);
     }
 
