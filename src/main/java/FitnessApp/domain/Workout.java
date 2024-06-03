@@ -1,16 +1,20 @@
 package FitnessApp.domain;
 
 import FitnessApp.domain.enums.WorkoutType;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
-
+@Entity
 public class Workout {
+    @Id
+    @GeneratedValue
     public long id;
-    private final String name;
-    private final String description;
-    private final String image;
-    private final ArrayList<Exercise> exercises = new ArrayList<Exercise>();
-    private final WorkoutType workoutType;
+    private String name;
+    private String description;
+    private String image;
+    @OneToMany(cascade = CascadeType.ALL)
+    private ArrayList<Exercise> exercises = new ArrayList<Exercise>();
+    private WorkoutType workoutType;
 
 
     public Workout(long id, String name, String description, String image, WorkoutType workoutType) {
@@ -19,6 +23,10 @@ public class Workout {
         this.description = description;
         this.image = image;
         this.workoutType = workoutType;
+    }
+
+    public Workout(){
+
     }
 
     public void addExercise(Exercise exercise){

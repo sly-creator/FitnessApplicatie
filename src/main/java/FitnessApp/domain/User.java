@@ -1,14 +1,23 @@
 package FitnessApp.domain;
 
+
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 
+@Entity
 public class User {
+    @Id
+    @GeneratedValue
     public long id;
     private String name;
     private String email;
     private String password;
+    @OneToMany(cascade = CascadeType.ALL)
     private ArrayList<Workout> workouts= new ArrayList<Workout>();
+    @OneToMany(cascade = CascadeType.ALL)
     private ArrayList<WorkoutSession> workoutSessions= new ArrayList<WorkoutSession>();
+    @OneToMany(cascade = CascadeType.ALL)
     private ArrayList<ExerciseHistory> exerciseHistories= new ArrayList<ExerciseHistory>();
 
 
@@ -17,6 +26,10 @@ public class User {
         this.name = name;
         this.email = email;
         this.password = password;
+    }
+
+    public User(){
+
     }
 
     public void addWorkOut(Workout workout){
