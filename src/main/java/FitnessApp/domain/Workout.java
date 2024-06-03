@@ -17,8 +17,7 @@ public class Workout {
     private WorkoutType workoutType;
 
 
-    public Workout(long id, String name, String description, String image, WorkoutType workoutType) {
-        this.id = id;
+    public Workout( String name, String description, String image, WorkoutType workoutType) {
         this.name = name;
         this.description = description;
         this.image = image;
@@ -49,4 +48,38 @@ public class Workout {
     }
 
 
+    public void setName(String name) {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public void setExercises(ArrayList<Exercise> exercises) {
+        this.exercises = exercises;
+    }
+
+    public WorkoutType getWorkoutType() {
+        return workoutType;
+    }
+
+    public void setWorkoutType(WorkoutType workoutType) {
+        this.workoutType = workoutType;
+    }
 }

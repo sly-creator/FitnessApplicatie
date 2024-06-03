@@ -14,15 +14,37 @@ public class WorkoutSession {
     @OneToOne(cascade = CascadeType.ALL)
     private Workout workout;
 
-    public WorkoutSession(long id, Date startDate, Date endDate, Workout workout) {
-        this.id = id;
+    public WorkoutSession( Date startDate, Date endDate, Workout workout) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.workout = workout;
     }
 
     public WorkoutSession(){
+    }
 
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public Workout getWorkout() {
+        return workout;
+    }
+
+    public void setWorkout(Workout workout) {
+        this.workout = workout;
     }
 
     public boolean equals(WorkoutSession workoutSession){

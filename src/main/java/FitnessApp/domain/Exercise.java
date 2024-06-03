@@ -20,8 +20,7 @@ public class Exercise {
     private  MuscleType muscleType;
     private  ExerciseType exerciseType;
 
-    public Exercise(long id, String name, String description, String image, int sets, int reps, MuscleType muscleType, ExerciseType exerciseType) {
-        this.id = id;
+    public Exercise(String name, String description, String image, int sets, int reps, MuscleType muscleType, ExerciseType exerciseType) {
         this.name = name;
         this.description = description;
         this.image = image;
@@ -40,6 +39,59 @@ public class Exercise {
     }
 
 
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public int getSets() {
+        return sets;
+    }
+
+    public void setSets(int sets) {
+        this.sets = sets;
+    }
+
+    public int getReps() {
+        return reps;
+    }
+
+    public void setReps(int reps) {
+        this.reps = reps;
+    }
+
+    public MuscleType getMuscleType() {
+        return muscleType;
+    }
+
+    public void setMuscleType(MuscleType muscleType) {
+        this.muscleType = muscleType;
+    }
+
+    public ExerciseType getExerciseType() {
+        return exerciseType;
+    }
+
+    public void setExerciseType(ExerciseType exerciseType) {
+        this.exerciseType = exerciseType;
+    }
 }
